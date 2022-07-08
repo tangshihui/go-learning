@@ -2,29 +2,26 @@ package main
 
 import (
 	"example/go-learning/restAPI/model"
+	"example/go-learning/restAPI/service"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 )
 
-var albums = []model.Album{
-	{ID: "1", Title: "Brain", Artist: "Tom", Price: 36},
-	{ID: "2", Title: "Jeru", Artist: "Gerry", Price: 38.9},
-}
-
 func getAlbums(ctx *gin.Context) {
-	ctx.IndentedJSON(http.StatusOK, model.OK(albums))
+	ctx.IndentedJSON(http.StatusOK, model.OK(service.Albums))
 }
 
 func getAlbumById(ctx *gin.Context) {
 	id := ctx.Param("id")
-	for _, album := range albums {
-		if album.ID == id {
-			ctx.IndentedJSON(http.StatusOK, model.OK(album))
-			return
-		}
+	album, err := service.GetAlbumById(id)
+	if err != nil {
+		log.Printf("Error:%s", err.Error())
+		ctx.IndentedJSON(http.StatusOK, model.NotFound())
+		return
 	}
 
-	ctx.IndentedJSON(http.StatusOK, model.NotFound())
+	ctx.IndentedJSON(http.StatusOK, model.OK(album))
 }
 
 func postAlbums(ctx *gin.Context) {
@@ -34,7 +31,7 @@ func postAlbums(ctx *gin.Context) {
 		return
 	}
 
-	albums = append(albums, newAlbum)
+	service.AddAlbum(newAlbum)
 	ctx.JSON(http.StatusOK, model.OK(newAlbum))
 }
 
