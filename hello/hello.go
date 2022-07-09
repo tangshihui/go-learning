@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 const CITY = "NJ"
 
@@ -52,4 +55,21 @@ func main() {
 	//const
 	const BIGNUMBER = 20
 	fmt.Println(Add(2, BIGNUMBER))
+
+	/////////////
+	//time format
+	var yyyyMMDD_HHMMSS = "2006-01-02 15:04:05T"
+	var now = time.Now()
+
+	fmt.Println(now.Format(yyyyMMDD_HHMMSS))
+	fmt.Println(time.Local)
+	fmt.Println(now.Format(time.RFC3339))
+
+	sh, _ := time.LoadLocation("Asia/Shanghai")
+	tokyo, _ := time.LoadLocation("Asia/Tokyo")
+
+	fmt.Println(now.In(sh).Format(time.RFC3339))
+	fmt.Println(now.In(tokyo).Format(time.RFC3339))
+	fmt.Println(now.In(time.UTC).Format(time.RFC3339))
+
 }
