@@ -3,7 +3,9 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"example/go-learning/echoTest/handler"
 	"example/go-learning/echoTest/model"
+	"example/go-learning/echoTest/repo"
 	"github.com/labstack/echo-contrib/prometheus"
 	"io"
 	"log"
@@ -93,6 +95,15 @@ func main() {
 	e.GET("/ping", ping)
 	e.GET("/hello/:name", hello)
 	e.PUT("/user", addUser)
+
+	userRepo := repo.NewUserRepo(repo.DB)
+	defer repo.DB.Close()
+	userHandler := handler.NewUserHandler(userRepo)
+	e.GET("/users", userHandler.ListAllUsers)
+	e.GET("/user/:id", userHandler.QueryUser)
+	e.DELETE("/user/:id", userHandler.DeleteUser)
+	e.PUT("/user", userHandler.SaveUser)
+	e.POST("/user", userHandler.UpdateUser)
 
 	e.Start(":8080")
 }
