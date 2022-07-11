@@ -66,10 +66,17 @@ func main() {
 	fmt.Println(now.Format(time.RFC3339))
 
 	sh, _ := time.LoadLocation("Asia/Shanghai")
-	tokyo, _ := time.LoadLocation("Asia/Tokyo")
+	//tokyo, _ := time.LoadLocation("Asia/Tokyo")
 
 	fmt.Println(now.In(sh).Format(time.RFC3339))
-	fmt.Println(now.In(tokyo).Format(time.RFC3339))
+	//fmt.Println(now.In(tokyo).Format(time.RFC3339))
 	fmt.Println(now.In(time.UTC).Format(time.RFC3339))
+	fmt.Println(now.UTC().Format(time.RFC3339))
+
+	fmt.Println("======================")
+	utcTime := time.Date(2022, 7, 10, 10, 0, 0, 0, time.UTC)
+	fmt.Println(utcTime.Format(time.RFC3339))
+	fmt.Println(utcTime.UTC().Format(time.RFC3339))
+	fmt.Println(utcTime.In(sh).Format(time.RFC3339))
 
 }

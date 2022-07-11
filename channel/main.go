@@ -29,8 +29,8 @@ func main() {
 }
 
 func testTicker() {
-	var c1 = make(chan int, 1)
-	var c2 = make(chan int, 1)
+	var c1 = make(chan int, 0)
+	var c2 = make(chan int, 0)
 
 	/*
 		r2: 2
@@ -57,9 +57,9 @@ func testTicker() {
 		}
 	}()
 
-	c2 <- 2
 	c1 <- 1
 	c1 <- 11
+	c2 <- 2
 	c1 <- 12
 
 	time.Sleep(5 * time.Second)
