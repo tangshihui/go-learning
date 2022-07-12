@@ -1,0 +1,16 @@
+package model
+
+import "time"
+
+type User struct {
+	Id        int       `json:"id",gorm:"primaryKey"`
+	Name      string    `json:"name"`
+	Address   string    `json:"address"`
+	CreatedAt time.Time `json:"createdAt"`
+	UpdatedAt time.Time `json:"updatedAt"`
+}
+
+//自定义表名
+func (User) TableName() string {
+	return "user"
+}
