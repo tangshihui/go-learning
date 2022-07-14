@@ -33,12 +33,12 @@ func (r *CreditCardRepo) ListAll(page, perPage int) ([]model.CreditCard, error) 
 	return cards, nil
 }
 
-func (r *CreditCardRepo) SaveCreditCard(card model.CreditCard) (*model.CreditCard, error) {
-	res := r.db.Create(&card)
+func (r *CreditCardRepo) SaveCreditCard(card *model.CreditCard) (*model.CreditCard, error) {
+	res := r.db.Create(card)
 
 	log.Printf("inserted user:%v", card.Id)
 
-	return &card, res.Error
+	return card, res.Error
 }
 
 //func (r *UserRepo) DeleteUser(id int) (int64, error) {

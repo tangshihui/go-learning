@@ -16,11 +16,11 @@ func (User) TableName() string {
 }
 
 type CreditCard struct {
-	Id         int       `json:"id",gorm:"primaryKey"`
-	UserId     string    `json:"user_id"`
-	CardNumber string    `json:"card_number"`
-	CreatedAt  time.Time `json:"createdAt"`
-	UpdatedAt  time.Time `json:"updatedAt"`
+	Id         int       `json:"id" gorm:"primary_key"`
+	UserId     int       `json:"user_id" gorm:"column:userId"`
+	CardNumber string    `json:"card_number" gorm:"column:cardNumber"`
+	CreatedAt  time.Time `json:"created_at" gorm:"column:createdAt"`
+	UpdatedAt  time.Time `json:"updated_at" gorm:"column:updatedAt"`
 }
 
 //自定义表名

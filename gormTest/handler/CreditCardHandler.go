@@ -27,7 +27,7 @@ func (h *CreditCardHandler) SaveCreditCard(e echo.Context) error {
 	card := model.CreditCard{}
 	e.Bind(&card)
 
-	savedCard, _ := h.repo.SaveCreditCard(card)
+	savedCard, _ := h.repo.SaveCreditCard(&card)
 	return e.JSON(http.StatusOK, savedCard)
 }
 
