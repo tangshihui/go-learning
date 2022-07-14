@@ -94,5 +94,12 @@ func main() {
 	e.PUT("/user", userHandler.SaveUser)
 	e.POST("/user", userHandler.UpdateUser)
 
+	creditCardRepo := repo.NewCreditCardRepo(repo.DB)
+	creditCardHandler := handler.NewCreditCardHandler(creditCardRepo)
+	e.GET("/credit-card", creditCardHandler.ListAll)
+	e.GET("/credit-card/:id", creditCardHandler.QueryById)
+	e.GET("/credit-card/:userId", creditCardHandler.QueryByUserId)
+	e.POST("/credit-card", creditCardHandler.SaveCreditCard)
+
 	e.Start(":8080")
 }

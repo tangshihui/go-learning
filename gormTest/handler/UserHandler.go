@@ -17,7 +17,9 @@ func NewUserHandler(repo *repo.UserRepo) *UserHandler {
 }
 
 func (h *UserHandler) ListAllUsers(e echo.Context) error {
-	users, _ := h.repo.ListAllUsers()
+	page, _ := strconv.Atoi(e.QueryParam("page"))
+	perPage, _ := strconv.Atoi(e.QueryParam("perPage"))
+	users, _ := h.repo.ListAllUsers(page, perPage)
 	return e.JSON(http.StatusOK, users)
 }
 

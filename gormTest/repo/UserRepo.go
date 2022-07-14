@@ -16,15 +16,21 @@ func NewUserRepo(db *gorm.DB) *UserRepo {
 	}
 }
 
-func (r *UserRepo) ListAllUsers() ([]model.User, error) {
-	user := make([]model.User, 0)
-	result := r.db.Find(&user)
+// list all users by paganation
+//
+//page
+//
+//perPage
+func (r *UserRepo) ListAllUsers(page, perPage int) ([]model.User, error) {
+	users := make([]model.User, 0)
+	offset := (page - 1) * perPage
+	result := r.db.Model(&model.User{}).Order("name desc").Limit(perPage).Offset(offset).Find(&users)
 
 	if result.Error != nil {
 		log.Printf("failed set user")
 	}
 
-	return user, nil
+	return users, nil
 }
 
 func (r *UserRepo) SaveUser(user model.User) (*model.User, error) {
