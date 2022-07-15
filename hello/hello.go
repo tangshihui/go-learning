@@ -79,4 +79,11 @@ func main() {
 	fmt.Println(utcTime.UTC().Format(time.RFC3339))
 	fmt.Println(utcTime.In(sh).Format(time.RFC3339))
 
+	rate := float64(1.2)
+	fmt.Println(float64(1.2) / 6)
+
+	fmt.Println(rate * float64(1/6.0))
+
+	fmt.Println(rate / float64(6.0))
+
 }

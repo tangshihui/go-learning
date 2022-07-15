@@ -1,0 +1,41 @@
+definitions:
+  model.User:
+    properties:
+      address:
+        type: string
+      createdAt:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /user:
+    put:
+      consumes:
+      - application/json
+      description: 新增用户
+      operationId: api-user-update
+      parameters:
+      - description: user 数据
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.User'
+      summary: 新增用户
+      tags:
+      - user
+swagger: "2.0"

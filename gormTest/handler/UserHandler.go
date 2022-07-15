@@ -23,6 +23,16 @@ func (h *UserHandler) ListAllUsers(e echo.Context) error {
 	return e.JSON(http.StatusOK, users)
 }
 
+// SaveUser 新增用户
+// @Tags user
+// @Summary 新增用户
+// @Description 新增用户
+// @ID api-user-update
+// @Accept  json
+// @Produce  json
+// @Param body body model.User true "user 数据"
+// @Success 200 {object} model.User
+// @Router /user [put]
 func (h *UserHandler) SaveUser(e echo.Context) error {
 	user := model.User{}
 	e.Bind(&user)

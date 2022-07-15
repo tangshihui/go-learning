@@ -3,15 +3,16 @@ package main
 import (
 	"bufio"
 	"bytes"
+	_ "example/go-learning/gormTest/docs"
 	"example/go-learning/gormTest/handler"
 	"example/go-learning/gormTest/repo"
 	"github.com/labstack/echo-contrib/prometheus"
+	"github.com/labstack/echo/v4"
+	echoSwagger "github.com/swaggo/echo-swagger"
 	"io"
+	"io/ioutil"
 	"log"
 	"net"
-
-	"github.com/labstack/echo/v4"
-	"io/ioutil"
 
 	"github.com/labstack/echo/v4/middleware"
 	"net/http"
@@ -81,6 +82,7 @@ func main() {
 	e.Use(middleware.Recover())
 	//e.Use(selfMiddle)
 	prometheus.NewPrometheus("go-learning", nil).Use(e)
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	e.GET("/ping", ping)
 	e.GET("/hello/:name", hello)
