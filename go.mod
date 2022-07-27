@@ -3,23 +3,21 @@ module example/go-learning
 go 1.18
 
 require (
+	github.com/emirpasic/gods v1.18.1
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/labstack/echo-contrib v0.12.0
 	github.com/labstack/echo/v4 v4.7.2
 	github.com/swaggo/echo-swagger v1.3.3
+	github.com/swaggo/swag v1.8.3
 	gorm.io/driver/mysql v1.3.5
 	gorm.io/gorm v1.23.8
 )
 
 require (
 	github.com/KyleBanks/depth v1.2.1 // indirect
-	github.com/PuerkitoBio/purell v1.1.1 // indirect
-	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.1.1 // indirect
-	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
-	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
 	github.com/go-openapi/jsonreference v0.20.0 // indirect
@@ -48,15 +46,10 @@ require (
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.32.1 // indirect
 	github.com/prometheus/procfs v0.6.0 // indirect
-	github.com/russross/blackfriday/v2 v2.1.0 // indirect
-	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/swaggo/files v0.0.0-20220610200504-28940afbdbfe // indirect
-	github.com/swaggo/swag v1.8.3 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
-	github.com/urfave/cli/v2 v2.11.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.1 // indirect
-	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
 	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4 // indirect
 	golang.org/x/net v0.0.0-20220708220712-1185a9018129 // indirect
 	golang.org/x/sys v0.0.0-20220712014510-0a85c31ab51e // indirect
@@ -65,4 +58,5 @@ require (
 	golang.org/x/tools v0.1.11 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
